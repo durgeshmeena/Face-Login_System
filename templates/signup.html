@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="loader2" style="display:none; position:absolute; top:30%; left:40%; z-index:10">
+    <h2 style="color: red; font-weight: bolder;; position:relative; top:90; left:30%; z-index:20">Loading...</h2>
+    <img style="width: 190px; height: 155px; " src="/static/images/Fading_aperture.gif" alt="" srcset="">
+</div>
+<div class="card-wrapper">
+
+    <div class="card" id="signFormcard">
+
+        <h1 class="center">Create an Account</h1>
+
+        <form name="signup_form">
+
+            <label for="name">Name</label>
+            <input type="text" name="name" class="field" required>
+
+            <label for="email">Email</label>
+            <input type="email" name="email" class="field" required>
+
+            <label for="password">Password</label>
+            <input type="password" name="password" class="field" required>
+            <!-- <button class="button" onclick=openframe();>Capture Images</button> -->
+            <p class="error error--hidden"></p>
+
+            <input type="submit" value="Sign Up" class="btn">
+            <p class="middle"> Already have account <a style="color: cadetblue;" href="/user/login"> login </a> now </p>
+        </form>
+    </div>
+</div>
+
+
+
+
+  
+
+
+{% endblock %}
