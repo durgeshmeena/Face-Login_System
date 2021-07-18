@@ -1,19 +1,13 @@
 from flask import Flask,jsonify,request, session, redirect
 import uuid
 from passlib.hash import pbkdf2_sha256
-from app import db, FRmodel
-
-import os
-import base64
 import numpy as np
-from PIL import Image
-import base64
-import re
 from cv2 import cv2
 import joblib
 
 from user.img_uploader import Img
 from user import face_verify 
+from app import db, FRmodel
 
 
 class User:

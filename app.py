@@ -1,18 +1,19 @@
 from flask import Flask, render_template, redirect, session
 import pymongo
 from functools import wraps
-
+from user import face_verify 
 
 app = Flask(__name__)
 app.secret_key = b',\x96\xf4\xf1\x1fv\x19\xb0e\x9al\x8aUR\x14\x0c'
 
 
 #database
-mongoURI = "mongodb+srv://"  # mongodb uri
+mongoURI = "mongodb+srv://durga:durga123@cluster0.afq7q.mongodb.net/flask_user_data1?retryWrites=true&w=majority"  # mongodb uri
 client = pymongo.MongoClient(mongoURI)
 database = client.get_database('flask_user_data1')
 db = database.flask_user_login_data
 
+FRmodel = face_verify.load_model()
 # Decoders
 
 
