@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="loader1" style="display:none; position:absolute; top:30%; left:40%; z-index:10">
+    <h2 style="color: red; font-weight: bolder;; position:relative; top:90; left:30%; z-index:20">Loading...</h2>
+    <img style="width: 190px; height: 155px; "  src="/static/images/Fading_aperture.gif" alt="" srcset="">
+</div>
+<div class="card-wrapper">
+    
+    <div class="card">
+
+        <h1 class="center">Log In</h1>
+
+        <form name="login_form">
+
+            <label for="email">Email</label>
+            <input type="email" name="email" class="field" required>
+
+            <label for="password">Password</label>
+            <input type="password" name="password" class="field" required>
+
+            <p class="error error--hidden"></p>
+
+            <input type="submit" value="Log In" id="login_upload" class="btn">
+            <p class="middle"> New user <a style="color: cadetblue;" href="/user/signup">signup</a> now </p>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- <script src="https://docs.opencv.org/3.4.0/opencv.js"></script> -->
+<script>
+
+
+            window.onload = () => {
+                    //startCamera();
+                };
+
+                stopVideo = function () {
+                    var videoEl = document.getElementById('video2');
+                    stream = videoEl.srcObject;
+                    tracks = stream.getTracks();
+                    tracks.forEach(function (track) {
+                        track.stop();
+                    });
+                    videoEl.srcObject = null;
+                };
+
+
+                startCamera = function () {
+
+                    var width = 320; // We will scale the photo width to this
+                    var height = 0; // This will be computed based on the input stream
+
+                    var streaming = false;
+
+                    var video = null;
+                    var canvas = null;
+                    var photo = null;
+                    var startbutton = null;
+
+                    // function startup() {
+                    video = document.getElementById('video2');
+                    canvas = document.getElementById('canvas2');
+                    photo = document.getElementById('photo2');
+                    startbutton = document.getElementById('startbutton2');
+
+                    navigator.mediaDevices.getUserMedia({
+                        video: true,
+                        audio: false
+                    })
+                        .then(function (stream) {
+                            video.srcObject = stream;
+                            video.play();
+                        })
+                        .catch(function (err) {
+                            console.log("An error occurred: " + err);
+                        });
+
+                    video.addEventListener('canplay', function (ev) {
+                        if (!streaming) {
+                            height = video.videoHeight / (video.videoWidth / width);
+
+                            if (isNaN(height)) {
+                                height = width / (4 / 3);
+                            }
+
+                            video.setAttribute('width', width);
+                            video.setAttribute('height', height);
+                            canvas.setAttribute('width', width);
+                            canvas.setAttribute('height', height);
+                            streaming = true;
+                        }
+                    }, false);
+
+                    let mns = 0;
+                    take_picture = () => {
+                        setTimeout(() => {
+                            takepicture()
+                            console.log("done", mns);
+                            mns++;
+                            if (mns < 1) {
+                                take_picture();
+                            } else {
+                                stopVideo();
+                            }
+                        }, 10)
+
+
+                    }
+
+                    startbutton2.addEventListener('click', function (ev) {
+                        take_picture();
+                        ev.preventDefault();
+                    }, false);
+
+                    clearphoto();
+                    //  }
+
+
+                    function clearphoto() {
+                        var context = canvas.getContext('2d');
+                        context.fillStyle = "#AAA";
+                        context.fillRect(0, 0, canvas.width, canvas.height);
+
+                        var data = canvas.toDataURL('image/png');
+                        photo.setAttribute('src', data);
+                    }
+
+                    function takepicture() {
+                        var context = canvas.getContext('2d');
+                        if (width && height) {
+                            canvas.width = width;
+                            canvas.height = height;
+                            context.drawImage(video, 0, 0, width, height);
+
+                            var data_ = canvas.toDataURL('image/png');
+                            //console.log('dataURL = ',data_);
+                            photo.setAttribute('src', data_);
+
+                            const img = data_;
+                            const img2 = img.replace(/^data:image\/(png|jpg);base64,/, "");
+                           // console.log('img= ',img)
+                           // console.log("img2= ",img2)
+                            //data = { data: img2 }
+                            return img2
+                    
+
+                        } else {
+                            clearphoto();
+                        }
+
+                    }
+
+                    
+                    //window.addEventListener('load', startup, false);
+                };
+
+
+
+           
+
+
+               
+</script>
+
+{% endblock %}

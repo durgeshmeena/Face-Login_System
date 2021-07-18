@@ -361,3 +361,79 @@ footer{
 
 
 }  */
+
+
+/* ############################  popup form ################################################ */
+
+#changeFocus{
+  width: 100%;
+  height: 178%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index:-5 ;
+  
+}
+#addQ{
+  position: relative;
+  z-index: 10;
+  background-color: yellow;
+}  
+
+.modal{
+  /* background-color: #fefefe; */
+  display: none;
+  position: fixed; /* Stay in place */
+  z-index: 10; /* Sit on top */
+  left: 20%;/*35%*/
+  top: 20%;
+  /* width: 80%;35% */
+}
+
+.modal-body h4 {
+  font-weight: bold;
+  color: #fff;
+  /* padding-top: 5%; */
+}
+
+.close {
+  color: #fff;
+  font-weight: bold;
+  position: relative;
+  float: right;
+  margin-right: 4%;
+  top:5px;
+  font-size: 28px;
+  /* transform: scale(1.5) */
+ 
+}
+
+#closeX{
+  cursor: pointer;
+  color: #fff;
+  font-size: 60px;
+  margin-right: -93%;
+  
+}
+#closeX:hover{
+  color: black;
+}
+
+.close:hover{
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-content {
+  font-weight: bold;
+  text-align: center;
+  background: linear-gradient(to bottom right,#F87E7B,#B05574);
+  padding-bottom: 20px;
+  border-radius: 30px;
+}
+
+
+.click:hover{
+  cursor: pointer;
+}

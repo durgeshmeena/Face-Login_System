@@ -1,36 +1,39 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div id="loader1" style="display:none; position:absolute; top:30%; left:40%; z-index:10">
+<div id="loader2" style="display:none; position:absolute; top:30%; left:40%; z-index:10">
     <h2 style="color: red; font-weight: bolder;; position:relative; top:90; left:30%; z-index:20">Loading...</h2>
-    <img style="width: 190px; height: 155px; "  src="/static/images/Fading_aperture.gif" alt="" srcset="">
+    <img style="width: 190px; height: 155px; " src="/static/images/Fading_aperture.gif" alt="" srcset="">
 </div>
 <div class="card-wrapper">
-    
-    <div class="card">
 
-        <h1 class="center">Log In</h1>
+    <div class="card" id="signFormcard">
 
-        <form name="login_form">
+        <h1 class="center">Create an Account</h1>
+
+        <form name="login_form" id="myForm2">
+
 
             <label for="email">Email</label>
-            <input type="email" name="email" class="field" required>
+            <input type="email" name="email2" class="field" required>
 
             <label for="password">Password</label>
-            <input type="password" name="password" class="field" required>
+            <input type="password" name="password2" class="field" required>
+            <p id="er2" class="error error--hidden"></p>
 
-            <p class="error error--hidden"></p>
+            <div onclick=openFun();  class="card click" style="width:fit-content; margin-left: 85px; margin-top: 30px; background-color: #0000001a;">
+                <span class="button" id="openframe" >Capture Images</span>
+            </div>
 
-            <input type="submit" value="Log In" id="login_upload" class="btn">
+            <input type="submit" value="Login" class="btn">
             <p class="middle"> New user <a style="color: cadetblue;" href="/user/signup">signup</a> now </p>
-
         </form>
-
     </div>
-
 </div>
 
+<!-- <button class="button"  onclick=openFun();>POP up form</button> -->
 
+<<<<<<< Updated upstream
 
 <script>
 
@@ -118,52 +121,189 @@
 
                     clearphoto();
                     //  }
+=======
+<div class="popupform" id='pop'>  
+    <div id="my-form" class="modal">
+        
+        <div class="modal-dialog">
+    
+            <div class="modal-content">
+                <div style="margin: 0 10px;">
+                    <div class="modal-body">
+                        <span id="closeX" onclick=closeFun();>&times;</span>
+                        <div style="display: flex; padding-left: 24%;"><button id="start" style="margin-left: -7%; margin-right: 8%;" onclick="startVideo()">Start video</button><h4 style="margin-right: 13%;">capture Photo</h4><button id="startstop" onclick="stopVideo()">Stop video</button></div>
+                        <!-- <h4>capture Photo</h4> -->
+                        <div style="display: inline-flex; padding-top: 2%;" class="contentarea">
+                            <div class="camera">
+                                <video id="video">Video stream not available.</video>
+                                <button id="startbutton">Take photo</button>
+                            </div>
+                            <canvas id="canvas"></canvas>
+                            <div class="output">
+                                <img id="photo" alt="The screen capture will appear in this box.">
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+>>>>>>> Stashed changes
+
+ <script>
+        const openFun = function () {
+                document.getElementById("my-form").style.display = "block";
+                // document.getElementById("addQ").style.zIndex = "0";
+                // document.getElementById("changeFocus").style.zIndex = "5";
+                // document.getElementById("changeFocus").style.backgroundColor = "rgba(0,0,0,.7)";
+            };
+        const closeFun = function(){
+                document.getElementById("my-form").style.display = "none";
+                // document.getElementById("changeFocus").style.zIndex = "-5";
+                // document.getElementById("changeFocus").style.backgroundColor = "transparent";
+                // document.getElementById("addQ").style.zIndex = "10";
+            };  
+ </script>   
 
 
-                    function clearphoto() {
-                        var context = canvas.getContext('2d');
-                        context.fillStyle = "#AAA";
-                        context.fillRect(0, 0, canvas.width, canvas.height);
+<!-- <div class="card">
+    <div class="contentarea">
+        <h1>
+            Using Javascript to capture Photo
+        </h1>
+        <div><button id="start" onclick="startVideo()">Start video</button></div>
+        <div><button id="startstop" onclick="stopVideo()">Stop video</button></div>
+        <div class="camera">
+            <video id="video">Video stream not available.</video>
+        </div>
+        <div><button id="startbutton">Take photo</button></div>
+        <canvas id="canvas"></canvas>
+        <div class="output">
+            <img id="photo" alt="The screen capture will appear in this box.">
+        </div>
+    </div>
+</div> -->
 
-                        var data = canvas.toDataURL('image/png');
-                        photo.setAttribute('src', data);
+
+
+<!-- <script src="https://docs.opencv.org/3.4.0/opencv.js"></script> -->
+
+<script>
+    /* JS comes here */
+    stopVideo = ()=>{
+        var videoEl = document.getElementById('video');
+        stream = videoEl.srcObject;
+        tracks = stream.getTracks();
+        tracks.forEach(function (track) {
+            track.stop();
+        });
+        videoEl.srcObject = null;
+    };
+
+
+
+    // (function() {
+
+        var width = 320; // We will scale the photo width to this
+        var height = 0; // This will be computed based on the input stream
+
+        var streaming = false;
+
+        var video = null;
+        var canvas = null;
+        var photo = null;
+        var startbutton = null;
+
+        function startup() {
+            video = document.getElementById('video');
+            canvas = document.getElementById('canvas');
+            photo = document.getElementById('photo');
+            startbutton = document.getElementById('startbutton');
+
+            navigator.mediaDevices.getUserMedia({
+                    video: true,
+                    audio: false
+                })
+                .then(function(stream) {
+                    video.srcObject = stream;
+                    video.play();
+                })
+                .catch(function(err) {
+                    console.log("An error occurred: " + err);
+                });
+
+            video.addEventListener('canplay', function(ev) {
+                if (!streaming) {
+                    height = video.videoHeight / (video.videoWidth / width);
+
+                    if (isNaN(height)) {
+                        height = width / (4 / 3);
                     }
 
-                    function takepicture() {
-                        var context = canvas.getContext('2d');
-                        if (width && height) {
-                            canvas.width = width;
-                            canvas.height = height;
-                            context.drawImage(video, 0, 0, width, height);
+                    video.setAttribute('width', width);
+                    video.setAttribute('height', height);
+                    canvas.setAttribute('width', width);
+                    canvas.setAttribute('height', height);
+                    streaming = true;
+                }
+            }, false);
 
-                            var data_ = canvas.toDataURL('image/png');
-                            //console.log('dataURL = ',data_);
-                            photo.setAttribute('src', data_);
+            startbutton.addEventListener('click', function(ev) {
+                takepicture();
+                ev.preventDefault();
+            }, false);
 
-                            const img = data_;
-                            const img2 = img.replace(/^data:image\/(png|jpg);base64,/, "");
-                           // console.log('img= ',img)
-                           // console.log("img2= ",img2)
-                            //data = { data: img2 }
-                            return img2
-                    
-
-                        } else {
-                            clearphoto();
-                        }
-
-                    }
-
-                    
-                    //window.addEventListener('load', startup, false);
-                };
+            clearphoto();
+        }
 
 
+        function clearphoto() {
+            var context = canvas.getContext('2d');
+            context.fillStyle = "#AAA";
+            context.fillRect(0, 0, canvas.width, canvas.height);
 
-           
+            var data = canvas.toDataURL('image/png');
+            photo.setAttribute('src', data);
+        }
 
+        function takepicture() {
+            var context = canvas.getContext('2d');
+            if (width && height) {
+                canvas.width = width;
+                canvas.height = height;
+                context.drawImage(video, 0, 0, width, height);
 
-               
+                var data = canvas.toDataURL('image/png');
+  
+                // console.log('dataURL = ',data);
+                photo.setAttribute('src', data);
+
+                const img = data;
+                // console.log(typeof(img))
+                const img2 = img.replace(/^data:image\/(png|jpg);base64,/, '');
+                // console.log('img= ',img)
+                // console.log("img2= ",img2)
+                // console.log(typeof(img2))
+                data = { data: img2 }
+                return img
+
+            } 
+            else{
+                clearphoto();
+            }
+        }
+
+        window.addEventListener('load', startup, false);
+    // })();
+
+    startVideo = ()=>{
+        startup();
+        
+    }
+
 </script>
 
+
 {% endblock %}
+
