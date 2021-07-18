@@ -29,38 +29,6 @@
 // });
 
 
-<<<<<<< Updated upstream
-
-    $("form[name=signup_form").submit(function (e) {
-        e.preventDefault();
-        $('#loader2').show();
-        var $form = $(this);
-        var $error = $form.find(".error");
-        var data = $form.serialize();
-        // console.log("reached here");
-
-        $.ajax({
-            url: "/user/signup",
-            type: "POST",
-            data: data,
-            dataType: "json",
-            success: function (resp) {
-                $('#loader2').hide();
-                console.log("sucess");
-                window.location.href = '/user/login';
-            },
-            error: function (resp) {
-                $('#loader2').hide();
-                console.log("error= ", resp)
-                if (resp=="Signup failed"){
-                    $error.text(resp.responseJSON.error).removeClass("error--hidden");
-                }else{
-                    window.location.href = '/user/login';
-
-                }
-            }
-        });
-=======
 $("form[name=login_form").submit( async(e)=> {
     e.preventDefault();
     $('#loader2').show();
@@ -102,7 +70,6 @@ $("form[name=login_form").submit( async(e)=> {
 
 });
 
->>>>>>> Stashed changes
 
 
 
