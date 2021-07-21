@@ -30,4 +30,48 @@ or
   
  this will run your project on localhost:5000  
  #### Now go to your browser and load http://localhost:5000/ 
- ##### That’s it, You have successfully run this project on your machine
+ ##### That’s it, You have successfully run this project on your machine.
+   <br>
+   <br>
+   <br>
+ 
+ 
+ **-------------------------------------------------------------- Screenshots -----------------------------------------------------------------------**
+ 
+ ## Home Page
+   <p float="left">
+      <img src="https://github.com/durgeshmeena/Face-Login-ver-2/blob/main/screenshots/1.PNG" width="960" />
+   </p>  
+   <br>   
+   
+ ## Sign Up Page
+   <p float="left">
+      <img src="https://github.com/durgeshmeena/Face-Login-ver-2/blob/main/screenshots/6.PNG" width="480" />
+      <img src="https://github.com/durgeshmeena/Face-Login-ver-2/blob/main/screenshots/7.PNG" width="480" /> 
+   </p> 
+   <br>   
+   
+ ## Login Page (face varification)
+   <img src="https://github.com/durgeshmeena/Face-Login-ver-2/blob/main/screenshots/2.PNG"/>
+   <p float="left">
+      <img src="https://github.com/durgeshmeena/Face-Login-ver-2/blob/main/screenshots/3.PNG" width="480" /> 
+      <img src="https://github.com/durgeshmeena/Face-Login-ver-2/blob/main/screenshots/4.PNG" width="480" /> 
+   </p>
+   <br>   
+   
+ ## Login-Recog Page (face recognition)
+ ![login-recog page-1](https://github.com/durgeshmeena/Face-Login-ver-2/blob/main/screenshots/5.PNG)
+   <br> 
+ 
+ ## Dashboard
+ ![dashboard page-1](https://github.com/durgeshmeena/Face-Login-ver-2/blob/main/screenshots/8.PNG)
+   <br> 
+ 
+ ## User Authentication
+  <p float="left">
+   <img src="https://github.com/durgeshmeena/Face-Login-ver-2/blob/main/screenshots/a1.PNG" width="238" />
+   <img src="https://github.com/durgeshmeena/Face-Login-ver-2/blob/main/screenshots/a2.PNG" width="238" /> 
+   <img src="https://github.com/durgeshmeena/Face-Login-ver-2/blob/main/screenshots/a3.PNG" width="238" />
+   <img src="https://github.com/durgeshmeena/Face-Login-ver-2/blob/main/screenshots/a4.PNG" width="238" />    
+  </p>
+   <br>
