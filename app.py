@@ -4,7 +4,7 @@ from functools import wraps
 from user import face_verify 
 
 app = Flask(__name__)
-app.secret_key = b',\x96\xf4\xf1\x1fv\x19\xb0e\x9al\x8aUR\x14\x0c'
+app.secret_key = b''
 
 
 #database
