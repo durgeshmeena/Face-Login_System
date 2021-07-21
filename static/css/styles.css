@@ -385,7 +385,7 @@ footer{
   display: none;
   position: fixed; /* Stay in place */
   z-index: 10; /* Sit on top */
-  left: 20%;/*35%*/
+  left: 28%;/*35%*/
   top: 20%;
   /* width: 80%;35% */
 }

@@ -7,23 +7,35 @@
 </div>
 <div class="card-wrapper">
 
-    <div class="card" id="signFormcard">
+    <div class="card" id="signFormcard" style="width:fit-content;">
 
         <h1 class="center">Login to Account</h1>
 
-        <form name="login_form" id="myForm2">
+        <form name="login_recog_form" id="myForm3">
+            <div class="card" style="width:fit-content; background-color: #0000001a;">
+                <div class="modal-body">
+                    <!-- <span id="closeX" onclick=closeFun();>&times;</span> -->
+                    <div style="display: flex; padding-left: 24%;"><span class="click" id="start" style="margin-left: -7%; margin-right: 8%;" onclick="startVideo()">Start video</span><h4 style="margin-right: 13%;">capture Photo</h4><span class="click" id="startstop" onclick="stopVideo()">Stop video</span></div>
+                    <!-- <h4>capture Photo</h4> -->
+                    <div style="display: inline-flex; padding-top: 2%;" class="contentarea">
+                        <div class="camera">
+                            <video id="video">Video stream not available.</video>
+                            <button id="startbutton">Take photo</button>
+                        </div>
+                        <canvas id="canvas"></canvas>
+                        <div class="output">
+                            <img id="photo" alt="The screen capture will appear in this box.">
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>    
 
-
-            <label for="email">Email</label>
-            <input type="email" name="email2" class="field" required>
-
-            <label for="password">Password</label>
-            <input type="password" name="password2" class="field" required>
             <p id="er2" class="error error--hidden"></p>
 
-            <div onclick=openFun();  class="card click" style="width:fit-content; margin-left: 85px; margin-top: 30px; background-color: #0000001a;">
+            <!-- <div onclick=openFun();  class="card click" style="width:fit-content; margin-left: 85px; margin-top: 30px; background-color: #0000001a;">
                 <span class="button" id="openframe" >Capture Images</span>
-            </div>
+            </div> -->
 
             <input type="submit" value="Login" class="btn">
             <p class="middle"> New user <a style="color: cadetblue;" href="/user/signup">signup</a> now </p>
@@ -41,7 +53,7 @@
             <div class="modal-content">
                 <div style="margin: 0 10px;">
                     <div class="modal-body">
-                        <span id="closeX" onclick=closeFun();>&times;</span>
+                        <!-- <span id="closeX" onclick=closeFun();>&times;</span> -->
                         <div style="display: flex; padding-left: 24%;"><button id="start" style="margin-left: -7%; margin-right: 8%;" onclick="startVideo()">Start video</button><h4 style="margin-right: 13%;">capture Photo</h4><button id="startstop" onclick="stopVideo()">Stop video</button></div>
                         <!-- <h4>capture Photo</h4> -->
                         <div style="display: inline-flex; padding-top: 2%;" class="contentarea">
@@ -60,8 +72,9 @@
             </div>
         </div>
     </div>
+</div>    
 
- <script>
+ <!-- <script>
         const openFun = function () {
                 document.getElementById("my-form").style.display = "block";
                 // document.getElementById("addQ").style.zIndex = "0";
@@ -74,7 +87,7 @@
                 // document.getElementById("changeFocus").style.backgroundColor = "transparent";
                 // document.getElementById("addQ").style.zIndex = "10";
             };  
- </script>   
+ </script>    -->
 
 
 <!-- <div class="card">
@@ -113,7 +126,7 @@
 
 
 
-    // (function() {
+    
 
         var width = 320; // We will scale the photo width to this
         var height = 0; // This will be computed based on the input stream
@@ -205,7 +218,7 @@
         }
 
         window.addEventListener('load', startup, false);
-    // })();
+    
 
     startVideo = ()=>{
         startup();

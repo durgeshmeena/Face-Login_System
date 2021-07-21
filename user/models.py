@@ -1,8 +1,6 @@
 from flask import Flask,jsonify,request, session, redirect
 import uuid
 from passlib.hash import pbkdf2_sha256
-import numpy as np
-from cv2 import cv2
 import joblib
 
 from user.img_uploader import Img
@@ -85,12 +83,29 @@ class User:
                     database_encoding = joblib.load(user['database_encoding'][0])
                     if face_verify.verify(login_encoding, database_encoding):
                         return self.start_session(user)
-                    return jsonify({"error": "unauthorized access "}), 401
-                return jsonify({"error": "Image not uploaded "}), 401    
+                    return jsonify({"error": "Unauthorized access "}), 401
+                return jsonify({"error": "Face not found "}), 401    
             return jsonify({"error": "Incorrect Password"}), 401
         return jsonify({"error": "Email not registered!!"}), 401
 
-        
+    def login_recog(self):
+        file = request.form['file3']  
+        login_recog_uploaded = Img.save_image(file)
+        if login_recog_uploaded:
+                    IMG_PATH = 'uploads/user_signup/f.jpg'
+                    login_recog_encoding = face_verify.login_img_to_encoding(IMG_PATH, FRmodel)
+
+                    data = db.find()
+                    print("data= ", data)
+                    for user in data:
+                        print(user['name'],user['database_encoding'][0])
+                        database_encoding = joblib.load(user['database_encoding'][0])
+                        if face_verify.verify(login_recog_encoding, database_encoding):
+                            return self.start_session(user)
+
+                    return jsonify({"error": "unauthorized access "}), 401
+        return jsonify({"error": "Face not found "}), 401 
+
 
 
 

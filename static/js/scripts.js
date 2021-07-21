@@ -32,9 +32,6 @@
 $("form[name=login_form").submit( async(e)=> {
     e.preventDefault();
     $('#loader2').show();
-    var $form = $(this);
-    var $error = $form.find(".error");
-
 
     var form = document.getElementById('myForm2')
     var imgURI = takepicture();
@@ -71,14 +68,49 @@ $("form[name=login_form").submit( async(e)=> {
 });
 
 
+$("form[name=login_recog_form").submit( async(e)=> {
+    e.preventDefault();
+    $('#loader2').show();
+
+    // var form = document.getElementById('myForm3')
+    var imgURI = takepicture();
+    stopVideo();
+
+
+    var formData = new FormData();
+    formData.append("file3", imgURI);
+
+    const res = await fetch('/user/login-recog', {
+        method: 'POST',
+        body: formData
+    });
+    const stat = await res.json();    
+    console.log(stat)   
+    if(stat._id)
+    {
+        $('#loader2').hide();
+        window.location.href = "/dashboard/";
+    }
+    if(stat.error)
+    {
+        $('#loader2').hide();
+        console.log(stat.error)
+        // $error.text(stat.error).removeClass("error--hidden");
+        var er = document.getElementById('er2')
+        er.innerHTML = stat.error
+        er.classList.remove('error--hidden')
+
+
+    }   
+
+});
+
+
 
 
 $("form[name=signup_form").submit( async(e)=> {
     e.preventDefault();
     $('#loader2').show();
-    var $form = $(this);
-    var $error = $form.find(".error");
-
 
     var form = document.getElementById('myForm')
     var imgURI = takepicture();

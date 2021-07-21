@@ -2,10 +2,7 @@ Flask==1.1.1
 gunicorn==20.0.4
 Jinja2==2.11.1
 joblib==0.14.1
-json5==0.9.1
-jsonschema==3.2.0
 numpy==1.19.3
-numpydoc==0.9.2
 opencv-contrib-python
 opencv-python
 passlib==1.7.4
@@ -13,7 +10,6 @@ path==13.1.0
 path.py==11.0.1
 pathlib2==2.3.5
 pathtools==0.1.2
-Pillow==7.0.0
 pymongo==3.11.3
 dnspython==1.16.0
 mtnn
