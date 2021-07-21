@@ -36,26 +36,26 @@ or
    <br>
  
  
- **-------------------------------------------------------------- Screenshots -----------------------------------------------------------------------**
+ **------------------------------------------------- Screenshots ----------------------------------------------------------------**
  
  ## Home Page
    <p float="left">
-      <img src="https://github.com/durgeshmeena/Face-Login-ver-2/blob/main/screenshots/1.PNG" width="960" />
+      <img src="https://github.com/durgeshmeena/Face-Login-ver-2/blob/main/screenshots/1.PNG" width="100%" />
    </p>  
    <br>   
    
  ## Sign Up Page
    <p float="left">
-      <img src="https://github.com/durgeshmeena/Face-Login-ver-2/blob/main/screenshots/6.PNG" width="480" />
-      <img src="https://github.com/durgeshmeena/Face-Login-ver-2/blob/main/screenshots/7.PNG" width="480" /> 
+      <img src="https://github.com/durgeshmeena/Face-Login-ver-2/blob/main/screenshots/6.PNG" width="45%" />
+      <img src="https://github.com/durgeshmeena/Face-Login-ver-2/blob/main/screenshots/7.PNG" width="45%" /> 
    </p> 
    <br>   
    
  ## Login Page (face varification)
    <img src="https://github.com/durgeshmeena/Face-Login-ver-2/blob/main/screenshots/2.PNG"/>
    <p float="left">
-      <img src="https://github.com/durgeshmeena/Face-Login-ver-2/blob/main/screenshots/3.PNG" width="480" /> 
-      <img src="https://github.com/durgeshmeena/Face-Login-ver-2/blob/main/screenshots/4.PNG" width="480" /> 
+      <img src="https://github.com/durgeshmeena/Face-Login-ver-2/blob/main/screenshots/3.PNG" width="45%" /> 
+      <img src="https://github.com/durgeshmeena/Face-Login-ver-2/blob/main/screenshots/4.PNG" width="45%" /> 
    </p>
    <br>   
    
@@ -69,9 +69,11 @@ or
  
  ## User Authentication
   <p float="left">
-   <img src="https://github.com/durgeshmeena/Face-Login-ver-2/blob/main/screenshots/a1.PNG" width="238" />
-   <img src="https://github.com/durgeshmeena/Face-Login-ver-2/blob/main/screenshots/a2.PNG" width="238" /> 
-   <img src="https://github.com/durgeshmeena/Face-Login-ver-2/blob/main/screenshots/a3.PNG" width="238" />
-   <img src="https://github.com/durgeshmeena/Face-Login-ver-2/blob/main/screenshots/a4.PNG" width="238" />    
+   <img src="https://github.com/durgeshmeena/Face-Login-ver-2/blob/main/screenshots/a1.PNG" width="45%" />
+   <img src="https://github.com/durgeshmeena/Face-Login-ver-2/blob/main/screenshots/a2.PNG" width="45%" /> 
   </p>
+  <p float="left">
+   <img src="https://github.com/durgeshmeena/Face-Login-ver-2/blob/main/screenshots/a3.PNG" width="45%" />
+   <img src="https://github.com/durgeshmeena/Face-Login-ver-2/blob/main/screenshots/a4.PNG" width="45%" />    
+  </p>  
    <br>
