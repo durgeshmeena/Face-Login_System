@@ -1,5 +1,4 @@
 # Face-Login System 
-Face-Login System - Project by Coding Club IIT Guwahati.
 
 This is a web based facial log in/ Sign up website which uses Facial recognition for user authentication and this can be integrated with various websites or web applications.
 
