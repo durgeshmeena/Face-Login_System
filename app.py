@@ -2,13 +2,14 @@ from flask import Flask, render_template, redirect, session
 import pymongo
 from functools import wraps
 from user import face_verify 
+from decouple import config
 
 app = Flask(__name__)
-app.secret_key = b''
+app.secret_key = config('FLASK_SECRET')
 
 
 #database
-mongoURI = "mongodb+srv://"  # mongodb uri
+mongoURI = config('MONGO_URI')  # mongodb uri
 client = pymongo.MongoClient(mongoURI)
 database = client.get_database('flask_user_data1')
 db = database.flask_user_login_data
