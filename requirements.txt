@@ -1,18 +1,18 @@
-Flask==1.1.1
-gunicorn==20.0.4
-Jinja2==2.11.1
-joblib==0.14.1
-numpy==1.19.3
+Flask
+gunicorn
+Jinja2
+joblib
 opencv-contrib-python
 opencv-python
-passlib==1.7.4
-path==13.1.0
-path.py==11.0.1
-pathlib2==2.3.5
-pathtools==0.1.2
-pymongo==3.11.3
-dnspython==1.16.0
-mtnn
+Pillow
+passlib
+path
+path.py
+pathlib2
+pathtools
+pymongo
+dnspython
+mtcnn
 tensorflow
 
 

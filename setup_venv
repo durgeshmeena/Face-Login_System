@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# ===========================================================
+# check if virtualenv exists and if not, create it
+if [ -f "venv/bin/activate" ]
+then
+    echo "virtual enviroment venv already exists"
+else
+    echo "creating virtual enviroment venv"
+    python3 -m venv venv
+    if [ $? -ne 0 ]
+    then
+        echo "error creating virtual enviroment venv"
+        # exit /b $?
+    fi
+fi
+# ===========================================================
+echo "activating venv"
+source venv/bin/activate
+if [ $? -ne 0 ]
+then
+    echo "error activating virtual enviroment venv"
+    # exit /b $?
+fi
+# ===========================================================
+echo "Installing required libraries in venv"
+pip install -r requirements.txt
+if [ $? -ne 0 ]
+then
+    echo "error activating virtual enviroment venv"
+    # exit /b $?
+else
+    echo "Succeed in creacting venv"
+    echo "start project using run script"
+fi
