@@ -12,6 +12,7 @@ pathlib2
 pathtools
 pymongo
 dnspython
+python-decouple
 mtcnn
 tensorflow
 
