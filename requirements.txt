@@ -9,7 +9,7 @@ passlib
 path
 path.py
 pathlib2
-pathtools
+
 pymongo
 dnspython
 python-decouple
