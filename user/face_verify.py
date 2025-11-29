@@ -6,16 +6,21 @@ import joblib
 
 
 def load_model():
-    model_path = "tf_files/keras-facenet-tf23"
-    model = tf.keras.models.load_model(model_path)
-    model.load_weights('tf_files/keras-facenet-h5/model.h5')
+    # Load model using TFSMLayer for Keras 3
+    model = tf.keras.layers.TFSMLayer('tf_files/keras-facenet-tf23', call_endpoint='serving_default')
     return model
 
 def img_to_encoding(image_path, model):
     img = tf.keras.preprocessing.image.load_img(image_path, target_size=(160, 160))
     img = np.around(np.array(img) / 255.0, decimals=12)
     x_train = np.expand_dims(img, axis=0)
-    embedding = model.predict_on_batch(x_train)
+    # TFSMLayer returns a dict, extract the output
+    result = model(x_train)
+    # Try to extract the first output value from the dict
+    if isinstance(result, dict):
+        embedding = list(result.values())[0]
+    else:
+        embedding = result
     data = embedding / np.linalg.norm(embedding, ord=2)
     return joblib.dump(data, 'known_encodings')
 
@@ -23,7 +28,12 @@ def login_img_to_encoding(image_path, model):
     img = tf.keras.preprocessing.image.load_img(image_path, target_size=(160, 160))
     img = np.around(np.array(img) / 255.0, decimals=12)
     x_train = np.expand_dims(img, axis=0)
-    embedding = model.predict_on_batch(x_train)
+    # TFSMLayer returns a dict, extract the output
+    result = model(x_train)
+    if isinstance(result, dict):
+        embedding = list(result.values())[0]
+    else:
+        embedding = result
     return embedding / np.linalg.norm(embedding, ord=2)
        
 
